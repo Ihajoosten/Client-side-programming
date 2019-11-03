@@ -4,13 +4,14 @@
   "description": "back-end client side project",
   "main": "index.js",
   "scripts": {
-    "test": "test",
-    "nodemon": "npm run nodemon"
+    "start": "nodemon index.js",
+    "test": "test"
   },
   "author": "luc joosten",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "nodemon": "^1.19.4",
-    "express": "^4.17.1"
+    "tracer": "^1.0.1"
   }
 }
