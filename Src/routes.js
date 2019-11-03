@@ -1,5 +1,5 @@
-import loginAdmin from './views/admin/login';
-import dashboard from './views/admin/dashboard';
+import loginAdmin from './Views/admin/login';
+import dashboard from './Views/admin/dashboard';
 
 
 
