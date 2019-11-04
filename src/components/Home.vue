@@ -1,5 +1,5 @@
 <template>
-  <div class="jumbotron">
+  <div class="jumbotron custom-bg-dark">
     <h1 class="display-4">MEVN SPA Task Manager</h1>
     <p
       class="lead"
