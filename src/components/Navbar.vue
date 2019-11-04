@@ -1,7 +1,7 @@
 <template>
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top custom-bg-dark">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand title" href="#">
         <img alt="Vue-logo" class="Vue-logo" src="../assets/logo.png" />
         Task Manager
       </a>
