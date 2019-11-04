@@ -14,3 +14,29 @@ This is an individual client-side programming assignment for the second period o
 * NoSQL MongoDB for the database management 
 * Express.JS to build a secure RESTful API
 ----------
+
+
+# task-manager folder
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
