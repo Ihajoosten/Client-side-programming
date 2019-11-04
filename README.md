@@ -16,8 +16,6 @@ This is an individual client-side programming assignment for the second period o
 ----------
 
 
-# task-manager folder
-
 ## Project setup
 ```
 npm install
