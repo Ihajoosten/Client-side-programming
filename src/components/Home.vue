@@ -6,6 +6,6 @@
     >This is a simple task manager application built with MongoDB, ExpressJS, VueJS and NodeJS technologies</p>
     <hr class="my-4" />
     <p>Click below to begin managing tasks for users</p>
-    <a class="btn btn-success btn-lg" href="#" role="button">Learn more</a>
+    <router-link class="btn btn-success btn-lg" to="/tasks">View Tasks</router-link>
   </div>
 </template>

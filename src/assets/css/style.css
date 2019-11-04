@@ -24,6 +24,20 @@ li.nav-item a {
     text-transform: uppercase;
 }
 
+#custom-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background:#3ec09b;
+    transition: width .4s;
+}
+
+#custom-link:hover::after {
+    width: 100%;
+    transition: width .3s;
+}
+
 @media screen and (max-width: 767px) {
     div#navbarCollapse {
         width: 100%;
@@ -87,3 +101,4 @@ a.btn-success {
 a.btn-success:hover {
     background-color: #3da979!important;
 }
+

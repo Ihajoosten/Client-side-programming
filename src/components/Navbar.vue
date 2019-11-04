@@ -1,10 +1,10 @@
 <template>
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top custom-bg-dark">
-      <a class="navbar-brand title" href="#">
+      <router-link class="navbar-brand title" to="/">
         <img alt="Vue-logo" class="Vue-logo" src="../assets/logo.png" />
         Task Manager
-      </a>
+      </router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -18,25 +18,22 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">
-              Home
-            </a>
+          <li class="nav-item">
+            <router-link id="custom-link" class="nav-link" to="/" exact>Home</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Tasks</a>
+            <router-link id="custom-link" class="nav-link" to="/tasks" exact>Tasks</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Register</a>
+            <router-link id="custom-link" class="nav-link" to="/register" exact>Register</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+          <router-link id="custom-link" class="nav-link" to="/login" exact>Login</router-link>
           </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
+          <li class="nav-item">
+            <a id="custom-link" href="" class="nav-link">Logout</a>
           </li>
         </ul>
-        
       </div>
     </nav>
   </header>
