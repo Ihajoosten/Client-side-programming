@@ -9,5 +9,13 @@ const port = 3000
 setEnvironment(app);
 Routes(app);
 
+app.get('/', (req, res) => {
+    if (process.env.NODE_ENV !== 'production') {
+        return res.send('running server in development mode');
+    } else {
+        return res.sendfile('index.html', {root: __dirname + '/../dist/'});
+    }
+});
 
-app.listen(port, () => logger.info(`Server listening on port ${port}!`))
+
+app.listen(port, () => logger.trace(`Task Manager listening on port ${port}`))

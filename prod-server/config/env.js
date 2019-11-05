@@ -17,6 +17,10 @@ var _morgan = require('morgan');
 
 var _morgan2 = _interopRequireDefault(_morgan);
 
+var _bodyParser = require('body-parser');
+
+var _bodyParser2 = _interopRequireDefault(_bodyParser);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function setEnvironment(app) {
@@ -28,11 +32,14 @@ function setEnvironment(app) {
 }
 
 function setDevEnv(app) {
-    console.log('setting up development environment');
+    console.log('setting development environment');
+    app.use(_bodyParser2.default.json());
     app.use((0, _morgan2.default)('dev'));
     app.use((0, _cors2.default)());
 }
 
 function setProdEnv(app) {
-    console.log('setting up production environment');
+    app.use(_bodyParser2.default.json());
+    app.use(_express2.default.static(__dirname + "/../dist"));
+    console.log('setting production environment');
 }

@@ -17,6 +17,14 @@ var port = 3000;
 (0, _env.setEnvironment)(app);
 (0, _routes.Routes)(app);
 
+app.get('/', function (req, res) {
+    if (process.env.NODE_ENV !== 'production') {
+        return res.send('running server in development mode');
+    } else {
+        return res.sendfile('index.html', { root: __dirname + '/../dist/' });
+    }
+});
+
 app.listen(port, function () {
-  return logger.info('Server listening on port ' + port + '!');
+    return logger.trace('Task Manager listening on port ' + port);
 });
