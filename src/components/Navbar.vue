@@ -28,10 +28,13 @@
             <router-link id="custom-link" class="nav-link" to="/register" exact>Register</router-link>
           </li>
           <li class="nav-item">
-          <router-link id="custom-link" class="nav-link" to="/login" exact>Login</router-link>
+            <router-link id="custom-link" class="nav-link" to="/login" exact>Login</router-link>
           </li>
           <li class="nav-item">
-            <a id="custom-link" href="" class="nav-link">Logout</a>
+            <a id="custom-link" class="nav-link">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a id="custom-link" class="nav-link">{{ this.$store.state.username ? this.$store.state.username : null}}</a>
           </li>
         </ul>
       </div>
