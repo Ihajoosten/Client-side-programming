@@ -37,3 +37,7 @@ export function getUserId() {
 export function registerUser(user) {
   return http().post("/api/register", user);
 }
+
+export function getToken() {
+  return localStorage.getItem("token");
+}
