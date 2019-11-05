@@ -11,10 +11,7 @@ export function login(user) {
     .post("/api/auth", user)
     .then(res => {
       if (res) {
-        const fakeToken = {
-          token: "my-token"
-        };
-        setToken(fakeToken);
+        setToken(res.data.token);
       }
     });
 }
@@ -33,5 +30,5 @@ export function getUserId() {
 }
 
 export function registerUser(user) {
-  return http().post('/api/register', user);
+  return http().post("/api/register", user);
 }
