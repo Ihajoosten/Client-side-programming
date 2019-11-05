@@ -12,7 +12,7 @@ export function setEnvironment(app) {
 }
 
 function setDevEnv(app) {
-    console.log('setting development environment');
+    process.env.NODE_ENV = 'development';
     app.use(bodyParser.json());
     app.use(morgan('dev'));
     app.use(cors())
@@ -20,8 +20,7 @@ function setDevEnv(app) {
 }
 
 function setProdEnv(app) {
+    process.env.NODE_ENV = 'production';
     app.use(bodyParser.json());
-    app.use(express.static(__dirname + "/../dist"))
-    console.log('setting production environment');
- 
+    app.use(express.static(__dirname + "/../dist")) 
 }

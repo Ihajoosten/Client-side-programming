@@ -26,5 +26,5 @@ app.get('/', function (req, res) {
 });
 
 app.listen(port, function () {
-    return logger.trace('Task Manager listening on port ' + port);
+    return logger.trace('Task Manager listening on port ' + port + ' in ' + process.env.NODE_ENV + ' mode!');
 });

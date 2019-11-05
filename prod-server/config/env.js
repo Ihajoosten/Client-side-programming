@@ -32,14 +32,14 @@ function setEnvironment(app) {
 }
 
 function setDevEnv(app) {
-    console.log('setting development environment');
+    process.env.NODE_ENV = 'development';
     app.use(_bodyParser2.default.json());
     app.use((0, _morgan2.default)('dev'));
     app.use((0, _cors2.default)());
 }
 
 function setProdEnv(app) {
+    process.env.NODE_ENV = 'production';
     app.use(_bodyParser2.default.json());
     app.use(_express2.default.static(__dirname + "/../dist"));
-    console.log('setting production environment');
 }

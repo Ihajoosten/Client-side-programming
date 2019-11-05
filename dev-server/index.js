@@ -18,4 +18,4 @@ app.get('/', (req, res) => {
 });
 
 
-app.listen(port, () => logger.trace(`Task Manager listening on port ${port}`))
+app.listen(port, () => logger.trace(`Task Manager listening on port ${port}` + ' in ' + process.env.NODE_ENV + ' mode!'))
