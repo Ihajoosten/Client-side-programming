@@ -4,7 +4,9 @@ import Home from "./views/Home.vue";
 
 Vue.use(Router);
 
-export default new Router({
+const isLoggedIn = false;
+
+const router = new Router({
   routes: [
     {
       path: "/",
@@ -14,27 +16,62 @@ export default new Router({
     {
       path: "/tasks",
       name: "tasks-all",
-      component: () => import('./views/tasks/TaskAll.vue')
+      component: () => import('./views/tasks/TaskAll.vue'),
+      beforeEnter: (toolbar, from, next) => {
+        if(isLoggedIn) {
+          next();
+        } else {
+          next('/login');
+        }
+      }
     },
     {
       path: "/tasks/create",
       name: "tasks-create",
-      component: () => import('./views/tasks/TaskCreate.vue')
+      component: () => import('./views/tasks/TaskCreate.vue'),
+      beforeEnter: (toolbar, from, next) => {
+        if(isLoggedIn) {
+          next();
+        } else {
+          next('/login');
+        }
+      }
     },
     {
       path: "/tasks/edit/:id",
       name: "tasks-edit",
-      component: () => import('./views/tasks/TaskEdit.vue')
+      component: () => import('./views/tasks/TaskEdit.vue'),
+      beforeEnter: (toolbar, from, next) => {
+        if(isLoggedIn) {
+          next();
+        } else {
+          next('/login');
+        }
+      }
     },
     {
       path: "/login",
       name: "login",
-      component: () => import('./views/authentication/Login.vue')
+      component: () => import('./views/authentication/Login.vue'),
+      beforeEnter: (toolbar, from, next) => {
+        if(!isLoggedIn) {
+          next();
+        } else {
+          next('/');
+        }
+      }
     },
     {
       path: "/register",
       name: "register",
-      component: () => import('./views/authentication/Register.vue')
+      component: () => import('./views/authentication/Register.vue'),
+      beforeEnter: (toolbar, from, next) => {
+        if(!isLoggedIn) {
+          next();
+        } else {
+          next('/');
+        }
+      }
     },
     {
       path: "*",
@@ -44,3 +81,6 @@ export default new Router({
   linkActiveClass: "active",
   mode: 'history'
 });
+
+
+export default router;
