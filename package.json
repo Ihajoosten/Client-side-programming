@@ -6,13 +6,14 @@
     "serve": "vue-cli-service serve",
     "build": "set NODE_ENV=production&&babel dev-server --out-dir prod-server&&vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "dev": "set NODE_ENV=development&&babel dev-server --out-dir prod-server&&nodemon prod-server/index"
+    "dev": "set NODE_ENV=development&&babel dev-server --out-dir prod-server &&nodemon prod-server/index"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "core-js": "^3.3.2",
     "jquery": "^3.4.1",
+    "mongoose": "^5.7.7",
     "nodemon": "^1.19.4",
     "popper.js": "^1.16.0",
     "tracer": "^1.0.1",
