@@ -102,3 +102,11 @@ a.btn-success:hover {
     background-color: #3da979!important;
 }
 
+form.custom-form {
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    
+}

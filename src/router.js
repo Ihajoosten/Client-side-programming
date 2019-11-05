@@ -17,7 +17,7 @@ const router = new Router({
       path: "/tasks",
       name: "tasks-all",
       component: () => import('./views/tasks/TaskAll.vue'),
-      beforeEnter: (toolbar, from, next) => {
+      beforeEnter: (to, from, next) => {
         if(isLoggedIn) {
           next();
         } else {
@@ -29,7 +29,7 @@ const router = new Router({
       path: "/tasks/create",
       name: "tasks-create",
       component: () => import('./views/tasks/TaskCreate.vue'),
-      beforeEnter: (toolbar, from, next) => {
+      beforeEnter: (to, from, next) => {
         if(isLoggedIn) {
           next();
         } else {
@@ -41,7 +41,7 @@ const router = new Router({
       path: "/tasks/edit/:id",
       name: "tasks-edit",
       component: () => import('./views/tasks/TaskEdit.vue'),
-      beforeEnter: (toolbar, from, next) => {
+      beforeEnter: (to, from, next) => {
         if(isLoggedIn) {
           next();
         } else {
@@ -53,7 +53,7 @@ const router = new Router({
       path: "/login",
       name: "login",
       component: () => import('./views/authentication/Login.vue'),
-      beforeEnter: (toolbar, from, next) => {
+      beforeEnter: (to, from, next) => {
         if(!isLoggedIn) {
           next();
         } else {
@@ -65,7 +65,7 @@ const router = new Router({
       path: "/register",
       name: "register",
       component: () => import('./views/authentication/Register.vue'),
-      beforeEnter: (toolbar, from, next) => {
+      beforeEnter: (to, from, next) => {
         if(!isLoggedIn) {
           next();
         } else {
