@@ -63,7 +63,7 @@ div#app-container {
     position: fixed;
     top: 96px;
     left: 0;
-    bottom: 96px;
+    bottom: 20px;
     width: 100%;
     padding: 2rem;
     background-color: #1d2733;  
@@ -71,7 +71,7 @@ div#app-container {
 }
 
 footer#custom-footer {
-    height: 6rem;
+    height: 5rem;
     background-color: #373f46;
     font-size: 1rem;
     position: fixed;
