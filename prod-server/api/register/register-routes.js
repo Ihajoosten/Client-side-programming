@@ -1,14 +1,14 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _express = require('express');
+var _express = require("express");
 
 var _express2 = _interopRequireDefault(_express);
 
-var _registerController = require('./register-controller.js');
+var _registerController = require("./register-controller.js");
 
 var controller = _interopRequireWildcard(_registerController);
 
@@ -19,6 +19,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var router = _express2.default.Router();
 
 
-router.post('/register', controller.index);
+router.post("/register", controller.index);
 
 exports.default = router;

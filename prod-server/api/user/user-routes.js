@@ -1,14 +1,14 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
-var _express = require('express');
+var _express = require("express");
 
 var _express2 = _interopRequireDefault(_express);
 
-var _userController = require('./user-controller');
+var _userController = require("./user-controller");
 
 var controller = _interopRequireWildcard(_userController);
 
@@ -19,10 +19,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var router = _express2.default.Router();
 
 
-router.get('/user', controller.index);
+router.get("/user", controller.index);
 
-router.get('/user/:id', function (req, res) {
-    res.send('get.user - get user by Id');
+router.get("/user/:id", function (req, res) {
+  res.send("get.user - get user by Id");
 });
 
 exports.default = router;
