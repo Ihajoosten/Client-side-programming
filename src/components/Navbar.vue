@@ -21,21 +21,28 @@
           <li class="nav-item">
             <router-link id="custom-link" class="nav-link" to="/" exact>Home</router-link>
           </li>
-          <li class="nav-item">
+          <li v-if="$store.state.isLoggedIn" class="nav-item">
             <router-link id="custom-link" class="nav-link" to="/tasks" exact>Tasks</router-link>
           </li>
-          <li class="nav-item">
+          <li v-if="$store.state.isLoggedIn" class="nav-item">
+            <router-link id="custom-link" class="nav-link" to="/register" exact>Teams</router-link>
+          </li>
+          <li v-if="!$store.state.isLoggedIn" class="nav-item">
             <router-link id="custom-link" class="nav-link" to="/register" exact>Register</router-link>
           </li>
-          <li class="nav-item">
+          <li v-if="!$store.state.isLoggedIn" class="nav-item">
             <router-link id="custom-link" class="nav-link" to="/login" exact>Login</router-link>
           </li>
-          <li class="nav-item">
-            <a id="custom-link" class="nav-link">Logout</a>
+          <li v-if="$store.state.isLoggedIn" class="nav-item">
+            <a
+              id="custom-link"
+              class="nav-link"
+            >account</a>
           </li>
-          <li class="nav-item">
-            <a id="custom-link" class="nav-link">{{ this.$store.state.username ? this.$store.state.username : null}}</a>
+          <li v-if="$store.state.isLoggedIn" class="nav-item">
+            <a v-on:click.prevent="logout()" id="custom-link" class="nav-link">Logout</a>
           </li>
+          
         </ul>
       </div>
     </nav>
@@ -43,8 +50,15 @@
 </template>
 
 <script>
-export default {};
-</script>
+import * as auth from "../services/AuthService.js";
 
-<style scoped>
-</style>
+export default {
+  name: "Navbar",
+  methods: {
+    logout: function() {
+      auth.logout();
+      this.$router.push({ name: "home" });
+    }
+  }
+};
+</script>
