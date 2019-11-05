@@ -1,8 +1,7 @@
 import express from 'express';
 const router = express.Router();
+import * as controller from './authentication-controller.js';
 
-router.post('/auth', (req, res) => {
-    res.send('post.authenticate - login');
-});
+router.post('/auth', controller.index);
 
 export default router;
