@@ -52,7 +52,7 @@ const router = new Router({
     {
       path: "/login",
       name: "login",
-      component: () => import('./views/authentication/Login.vue'),
+      component: () => import('./views/account/Login.vue'),
       beforeEnter: (to, from, next) => {
         if(!isLoggedIn) {
           next();
@@ -64,7 +64,7 @@ const router = new Router({
     {
       path: "/register",
       name: "register",
-      component: () => import('./views/authentication/Register.vue'),
+      component: () => import('./views/account/Register.vue'),
       beforeEnter: (to, from, next) => {
         if(!isLoggedIn) {
           next();
