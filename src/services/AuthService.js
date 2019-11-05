@@ -1,15 +1,22 @@
 import store from "../store.js";
+import { http } from "../services/HttpService.js";
 
 export function isLoggedIn() {
-    const token = localStorage.getItem('token');
-    return token != null;
+  const token = localStorage.getItem("token");
+  return token != null;
 }
 
-export function login() {
-    const token = {
-        username: 'luc'
-    }
-    setToken(token)
+export function login(user) {
+  return http()
+    .post("/api/auth", user)
+    .then(res => {
+      if (res) {
+        const fakeToken = {
+          token: "my-token"
+        };
+        setToken(fakeToken);
+      }
+    });
 }
 
 function setToken(token) {
@@ -23,4 +30,8 @@ export function getUserName() {
 
 export function getUserId() {
   return 1;
+}
+
+export function registerUser(user) {
+  return http().post('/api/register', user);
 }

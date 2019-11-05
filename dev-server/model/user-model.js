@@ -15,6 +15,10 @@ userSchema.virtual('fullName').get(function() {
     return `${first} ${last}`;
 });
 
+export function passwordMatches(password, hash) {
+  return bcrypt.compareSync(password, hash);
+}
+
 userSchema.pre('save', function(next) {
     this.username = this.username.toLowerCase();
     this.first = this.first.toLowerCase();

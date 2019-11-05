@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.passwordMatches = passwordMatches;
 
 var _mongoose = require('mongoose');
 
@@ -28,6 +29,10 @@ userSchema.virtual('fullName').get(function () {
     var last = _stringUtility.StringUtility.capitalize(this.last.toLowerCase());
     return first + ' ' + last;
 });
+
+function passwordMatches(password, hash) {
+    return _bcryptNodejs2.default.compareSync(password, hash);
+}
 
 userSchema.pre('save', function (next) {
     this.username = this.username.toLowerCase();
