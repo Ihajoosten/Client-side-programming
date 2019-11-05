@@ -4,8 +4,8 @@
   "description": "back-end for project",
   "main": "server.js",
   "scripts": {
-    "dev": "babel server --out-dir prod-server",
-    "start": "node server.js",
+    "dev": "babel server.js --out-dir prod-server --watch",
+    "start": "node prod-server/server.js",
     "nodemon": "nodemon prod-server/server.js"
   },
   "keywords": [

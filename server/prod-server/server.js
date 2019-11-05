@@ -2,7 +2,7 @@
 
 var _express = _interopRequireDefault(require("express"));
 
-var logger = _interopRequireDefault(require("../config/config.js").logger);
+var _config = _interopRequireDefault(require("./config/config.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11,14 +11,14 @@ const port = process.env.PORT || 3000;
 app.use(_express.default.json()); // Generic endpoint handler - voor alle routes
 
 app.all("*", (req, res, next) => {
-  logger.trace("Generieke afhandeling aangeroepen!");
+  _config.default.trace("Generieke afhandeling aangeroepen!");
 
   const {
     method,
     url
   } = req;
 
-  logger.info("".concat(method, " ").concat(url));
+  _config.default.info("".concat(method, " ").concat(url));
 
   next();
 }); // // Handle endpoint not found.
@@ -40,7 +40,5 @@ app.all("*", (req, res, next) => {
 // });
 
 app.get('/', (req, res) => res.send('Hello World!'));
-app.listen(port, () =>
-  console.info(`Server listening on port ${port}!`)
-);
+app.listen(port, () => _config.default.info("Server listening on port ".concat(port, "!")));
 module.exports = app;
