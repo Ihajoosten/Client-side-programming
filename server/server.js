@@ -1,5 +1,5 @@
-const express = require("express");
-const logger = require("./config/config.js").logger;
+import express from 'express';
+import logger from './config/config.js';
 
 const app = express();
 const port = process.env.PORT || 3000;

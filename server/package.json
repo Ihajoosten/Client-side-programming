@@ -4,8 +4,9 @@
   "description": "back-end for project",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "dev": "babel server --out-dir prod-server",
+    "start": "node server.js",
+    "nodemon": "nodemon prod-server/server.js"
   },
   "keywords": [
     "NodeJS",
@@ -15,6 +16,12 @@
   "author": "Luc Joosten",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.6.0",
     "tracer": "^1.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3"
   }
 }
