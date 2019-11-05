@@ -8,7 +8,7 @@ app.use(express.json());
 
 // Generic endpoint handler - voor alle routes
 app.all("*", (req, res, next) => {
-  logger.info("Generieke afhandeling aangeroepen!");
+  logger.trace("Generieke afhandeling aangeroepen!");
   const { method, url } = req;
   logger.info(`${method} ${url}`);
   next();
