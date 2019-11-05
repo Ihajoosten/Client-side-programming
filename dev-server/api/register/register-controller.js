@@ -8,15 +8,17 @@ export function index(req, res) {
   }
 
   const user = new User({
-    username: req.body.username.toLowerCase(),
-    password: req.body.password
+    username: req.body.username,
+    password: req.body.password,
+    first: req.body.first,
+    last: req.body.last
   });
   user.save(error => {
     if (error) {
       if (error === 11000) {
         return res.status(403).json({ message: "Username is already taken" });
       }
-      return res.status(500).json();
+      return res.status(500).json({ message: "Server error" });
     }
     return res.status(201).json();
   });
@@ -30,6 +32,14 @@ function validateIndex(body) {
 
   if (StringUtility.isEmpty(body.password)) {
     errors += "Password is required.";
+  }
+
+  if (StringUtility.isEmpty(body.first)) {
+    errors += "First name is required.";
+  }
+
+  if (StringUtility.isEmpty(body.last)) {
+    errors += "Last name is required.";
   }
 
   return {

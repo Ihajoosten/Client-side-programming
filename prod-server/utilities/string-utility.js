@@ -16,7 +16,7 @@ var StringUtility = exports.StringUtility = function () {
     _createClass(StringUtility, null, [{
         key: "isEmpty",
         value: function isEmpty(value) {
-            return !value || value.trim();
+            return !value || value.length === 0;
         }
     }, {
         key: "capitalize",

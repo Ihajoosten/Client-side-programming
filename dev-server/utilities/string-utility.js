@@ -1,6 +1,6 @@
 export class StringUtility {
     static isEmpty(value) {
-        return !value || value.trim();
+        return !value || value.length === 0;
     }
 
     static capitalize(word) {
