@@ -20,8 +20,12 @@ This is an individual client-side programming assignment for the second period o
 ```
 npm install
 ```
+### Compiles for development and starts up back-end
+```
+npm run dev
+```
 
-### Compiles and hot-reloads for development
+### Compiles for development and starts up front-end
 ```
 npm run serve
 ```
