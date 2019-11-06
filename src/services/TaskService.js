@@ -13,7 +13,7 @@ export function createTask(task) {
 }
 
 export function deleteTask(id) {
-  return http().delete(`/api/task${id}`);
+  return http().delete(`/api/task/${id}`);
 }
 
 export function updateTask(task) {

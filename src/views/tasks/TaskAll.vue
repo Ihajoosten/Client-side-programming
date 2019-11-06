@@ -3,7 +3,7 @@
     <h1>Tasks</h1>
 
     <div class="mb-4">
-      <router-link to="/tasks/new" class="btn btn-success ml-2" exact>Create Task</router-link>
+      <router-link to="/tasks/create" class="btn btn-success ml-2" exact>Create Task</router-link>
     </div>
 
     <div v-if="tasks && tasks.length > 0" class="d-flex flex-wrap justify-content-start">
