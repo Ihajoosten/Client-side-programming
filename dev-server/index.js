@@ -1,11 +1,12 @@
+/* eslint-disable no-unused-vars */
 import express from "express";
 import { Routes } from "./routes";
 import { setEnvironment } from "./config/env.js";
 import { connectToDB } from "./config/db.js";
 
-const logger = require("../config/config.js").logger;
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
+const logger = require("../config/config.js").logger;
 
 setEnvironment(app);
 connectToDB();
@@ -27,3 +28,5 @@ app.listen(port, () =>
       " mode!"
   )
 );
+
+module.exports = app;
