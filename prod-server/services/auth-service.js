@@ -19,7 +19,10 @@ var logger = require("../../config/config").logger;
 
 function generateJWT(user) {
   var tokenData = { username: user.username, id: user.id };
-  return _jsonwebtoken2.default.sign({ user: tokenData }, process.env.TOKEN_SECRET);
+  return _jsonwebtoken2.default.sign({ user: tokenData }, process.env.TOKEN_SECRET, {
+    "algorithm": "HS256",
+    expiresIn: 86400 // expires in 24 hours
+  });
 }
 
 function requireLogin(req, res, next) {
@@ -30,23 +33,21 @@ function requireLogin(req, res, next) {
   next();
 }
 
-function decodeToken(req, res) {
+function decodeToken(req) {
   var token = req.headers['authorization'].replace(/^JWT\s/, '');
   logger.trace(token);
 
   if (!token) {
-    return "Fuck this shit";
+    logger.error("invalid token");
+    return null;
   }
 
-  _jsonwebtoken2.default.verify(token, process.env.TOKEN_SECRET, function (err, decoded) {
-    if (err) {
-      logger.error(err);
-      return res.json({ success: false, message: 'Failed to authenticate token.' });
-    } else {
-      // if everything is good, save to request for use in other routes
-      req.decoded = decoded;
-    }
-  });
+  try {
+    return _jsonwebtoken2.default.verify(token, process.env.TOKEN_SECRET);
+  } catch (error) {
+    logger.error(error);
+    return null;
+  }
 }
 
 function getUsername(req) {

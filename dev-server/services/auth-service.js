@@ -3,7 +3,10 @@ const logger = require("../../config/config").logger;
 
 export function generateJWT(user) {
   const tokenData = { username: user.username, id: user.id };
-  return jwt.sign({ user: tokenData }, process.env.TOKEN_SECRET);
+  return jwt.sign({ user: tokenData}, process.env.TOKEN_SECRET, {
+    "algorithm": "HS256",
+    expiresIn: 86400 // expires in 24 hours
+  });
 }
 
 export function requireLogin(req, res, next) {
@@ -14,23 +17,21 @@ export function requireLogin(req, res, next) {
   next();
 }
 
-export function decodeToken(req, res) {
+export function decodeToken(req) {
   const token = req.headers['authorization'].replace(/^JWT\s/, '');
   logger.trace(token);
 
   if (!token) {
-    return "Fuck this shit";
+    logger.error("invalid token")
+    return null;
   }
 
-  jwt.verify(token, process.env.TOKEN_SECRET, function(err, decoded) {
-    if (err) {
-        logger.error(err);
-        return res.json({ success: false, message: 'Failed to authenticate token.' });
-    } else {
-        // if everything is good, save to request for use in other routes
-        req.decoded = decoded;
-    }
-});
+  try {
+    return jwt.verify(token, process.env.TOKEN_SECRET);
+  } catch (error) {
+    logger.error(error);
+    return null;
+  }
 }
 
 export function getUsername(req) {
