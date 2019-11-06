@@ -13,7 +13,7 @@ Vue.config.productionTip = process.env.NODE_ENV === "production";
 Vue.filter("date", value => {
   if (!value) {
     return "";
-  }
+  } 
 
   return moment(value).format("DD MMM, YYYY");
 });

@@ -14,7 +14,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var logger = require("../config/config.js").logger;
 var app = (0, _express2.default)();
-var port = 4500;
+var port = process.env.PORT || 3000;
 
 (0, _env.setEnvironment)(app);
 (0, _db.connectToDB)();
