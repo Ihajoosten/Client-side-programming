@@ -35,15 +35,16 @@ function requireLogin(req, res, next) {
 
 function decodeToken(req) {
   var token = req.headers['authorization'].replace(/^JWT\s/, '');
-  logger.trace(token);
-
   if (!token) {
     logger.error("invalid token");
     return null;
   }
 
   try {
-    return _jsonwebtoken2.default.verify(token, process.env.TOKEN_SECRET);
+    var payload = _jsonwebtoken2.default.decode(token);
+    logger.debug(payload);
+    return payload;
+    //return jwt.verify(token, process.env.TOKEN_SECRET);
   } catch (error) {
     logger.error(error);
     return null;
@@ -51,8 +52,7 @@ function decodeToken(req) {
 }
 
 function getUsername(req) {
-  var token = req.headers['authorization'].replace(/^JWT\s/, '');
-
+  var token = decodeToken(req);
   if (!token) {
     return null;
   }
@@ -60,11 +60,9 @@ function getUsername(req) {
 }
 
 function getUserId(req) {
-  var token = req.headers['authorization'].replace(/^JWT\s/, '');
-
+  var token = decodeToken(req);
   if (!token) {
     return null;
   }
-  console.warn(token);
-  return token;
+  return token.user.id;
 }

@@ -19,15 +19,16 @@ export function requireLogin(req, res, next) {
 
 export function decodeToken(req) {
   const token = req.headers['authorization'].replace(/^JWT\s/, '');
-  logger.trace(token);
-
   if (!token) {
     logger.error("invalid token")
     return null;
   }
 
   try {
-    return jwt.verify(token, process.env.TOKEN_SECRET);
+    const payload = jwt.decode(token);
+    logger.debug(payload);
+    return payload;
+    //return jwt.verify(token, process.env.TOKEN_SECRET);
   } catch (error) {
     logger.error(error);
     return null;
@@ -35,20 +36,17 @@ export function decodeToken(req) {
 }
 
 export function getUsername(req) {
-  const token = req.headers['authorization'].replace(/^JWT\s/, '');
-
+  const token = decodeToken(req);
   if (!token) {
-    return null;
+      return null;
   }
   return token.user.username;
 }
 
 export function getUserId(req) {
-  const token = req.headers['authorization'].replace(/^JWT\s/, '');
-
+  const token = decodeToken(req);
   if (!token) {
-    return null;
+      return null;
   }
-  console.warn(token);
-  return token;
+  return token.user.id;
 }
