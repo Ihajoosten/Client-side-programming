@@ -9,7 +9,8 @@ export default new Vuex.Store({
     isLoggedIn: false,
     apiURL: "http://localhost:3000",
     username: null,
-    userId: null
+    userId: null,
+    token: localStorage.getItem("access_token") || null,
   },
   mutations: {
     authenticate(state) {

@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
           <label for="password">Body</label>
-          <textarea v-model="task.body" name="body" id="body" cols="30" rows="10"></textarea>
+          <textarea class="form-control" placeholder="Body" v-model="task.body" name="body" id="body" cols="30" rows="10"></textarea>
         </div>
         <div class="form-group">
           <label for="due-date">Due Date</label>
@@ -57,7 +57,7 @@ export default {
         task: this.task
       };
       await taskService.createTask(request);
-      this.$router.push({ name: "task-all" });
+      this.$router.push({ name: "tasks-all" });
     }
   }
 };

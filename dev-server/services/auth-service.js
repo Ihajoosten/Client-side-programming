@@ -1,8 +1,12 @@
 import jwt from "jsonwebtoken";
+const logger = require("../../config/config").logger;
 
 export function generateJWT(user) {
-  const tokenData = { username: user.username, id: user._id };
-  return jwt.sign({ user: tokenData }, process.env.TOKEN_SECRET);
+  const tokenData = { username: user.username, id: user.id };
+  return jwt.sign({ user: tokenData}, process.env.TOKEN_SECRET, {
+    "algorithm": "HS256",
+    expiresIn: 86400 // expires in 24 hours
+  });
 }
 
 export function requireLogin(req, res, next) {
@@ -13,22 +17,27 @@ export function requireLogin(req, res, next) {
   next();
 }
 
-export function decodeToken(req) {
-  const token = req.headers.authorization || req.headers["authorization"];
+export function decodeToken(req, res) {
+  const token = req.headers['authorization'];
+  logger.trace(token);
 
   if (!token) {
-    return null;
+    return "Fuck this shit";
   }
 
-  try {
-    return jwt.verify(token, process.env.TOKEN_SECRET);
-  } catch (error) {
-    return null;
-  }
+  jwt.verify(token, process.env.TOKEN_SECRET, function(err, decoded) {
+    if (err) {
+        logger.error(err);
+        return res.json({ success: false, message: 'Failed to authenticate token.' });
+    } else {
+        // if everything is good, save to request for use in other routes
+        req.decoded = decoded;
+    }
+});
 }
 
 export function getUsername(req) {
-  const token = req.headers.authorization || req.headers["authorization"];
+  const token = req.headers['authorization'].replace(/^JWT\s/, '');
 
   if (!token) {
     return null;
@@ -37,10 +46,11 @@ export function getUsername(req) {
 }
 
 export function getUserId(req) {
-  const token = req.headers.authorization || req.headers["authorization"];
+  const token = req.headers['authorization'].replace(/^JWT\s/, '');
 
   if (!token) {
     return null;
   }
-  return token.user.id;
+  console.warn(token);
+  return token;
 }

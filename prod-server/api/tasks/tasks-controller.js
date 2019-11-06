@@ -21,6 +21,12 @@ var _moment = require("moment");
 
 var _moment2 = _interopRequireDefault(_moment);
 
+var _authService = require("../../services/auth-service.js");
+
+var auth = _interopRequireWildcard(_authService);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function index(req, res) {
@@ -35,7 +41,7 @@ function index(req, res) {
 
 function create(req, res) {
   // Create task
-  var id = 10;
+  var id = auth.getUserId(req);
   _userModel2.default.findOne({ _id: id }, function (error, user) {
     if (error && !user) {
       return res.status(500).json();
@@ -55,7 +61,7 @@ function create(req, res) {
 
 function update(req, res) {
   // Update task
-  var id = 10;
+  var id = auth.getUserId(req);
 
   _userModel2.default.find({ _id: id }, function (error, user) {
     if (error) {
@@ -64,7 +70,7 @@ function update(req, res) {
     if (!user) {
       return res.status(404).json();
     }
-    var task = req.body.task;
+    var task = new _taskModel2.default(req.body.task);
     task.author = user._id;
     task.dueDate = (0, _moment2.default)(task.dueDate);
     _taskModel2.default.findOneAndUpdate({ _id: task._id }, task, function (error) {
@@ -91,7 +97,7 @@ function show(req, res) {
 
 function remove(req, res) {
   // Delete task
-  var id = 10;
+  var id = auth.getUserId(req);
   _taskModel2.default.findOne({ _id: req.params.id }, function (error, task) {
     if (error) {
       return res.status(500).json();
