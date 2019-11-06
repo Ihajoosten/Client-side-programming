@@ -42,9 +42,7 @@ function decodeToken(req) {
 
   try {
     var payload = _jsonwebtoken2.default.decode(token);
-    logger.debug(payload);
     return payload;
-    //return jwt.verify(token, process.env.TOKEN_SECRET);
   } catch (error) {
     logger.error(error);
     return null;

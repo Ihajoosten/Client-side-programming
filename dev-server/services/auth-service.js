@@ -26,9 +26,7 @@ export function decodeToken(req) {
 
   try {
     const payload = jwt.decode(token);
-    logger.debug(payload);
     return payload;
-    //return jwt.verify(token, process.env.TOKEN_SECRET);
   } catch (error) {
     logger.error(error);
     return null;
