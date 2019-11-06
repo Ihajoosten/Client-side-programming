@@ -5,7 +5,7 @@ import { connectToDB } from "./config/db.js";
 
 const logger = require("../config/config.js").logger;
 const app = express();
-const port = 3000;
+const port = 4500;
 
 setEnvironment(app);
 connectToDB();
