@@ -2,7 +2,7 @@
 
 - Azure Pipeline: [![Build Status](https://dev.azure.com/LucJoosten1234/LucJoosten1234/_apis/build/status/LucJoostenNL.Client-side-programming?branchName=master)](https://dev.azure.com/LucJoosten1234/LucJoosten1234/_build/latest?definitionId=1&branchName=master) 
 
-- [![pipeline status](https://gitlab.com/LucJoostenDev/Client-side-programming/badges/master/pipeline.svg)](https://gitlab.com/LucJoostenDev/Client-side-programming/commits/master)
+- GitLab Pipeline: [![pipeline status](https://gitlab.com/LucJoostenDev/Client-side-programming/badges/master/pipeline.svg)](https://gitlab.com/LucJoostenDev/Client-side-programming/commits/master)
 
 - Coverage: [![coverage report](https://gitlab.com/LucJoostenDev/Client-side-programming/badges/master/coverage.svg)](https://gitlab.com/LucJoostenDev/Client-side-programming/commits/master)
 
