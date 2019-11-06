@@ -19,10 +19,7 @@ var logger = require("../../config/config").logger;
 
 function generateJWT(user) {
   var tokenData = { username: user.username, id: user.id };
-  return _jsonwebtoken2.default.sign({ user: tokenData }, process.env.TOKEN_SECRET, {
-    "algorithm": "HS256",
-    expiresIn: 86400 // expires in 24 hours
-  });
+  return _jsonwebtoken2.default.sign({ user: tokenData }, process.env.TOKEN_SECRET);
 }
 
 function requireLogin(req, res, next) {
@@ -34,7 +31,7 @@ function requireLogin(req, res, next) {
 }
 
 function decodeToken(req, res) {
-  var token = req.headers['authorization'];
+  var token = req.headers['authorization'].replace(/^JWT\s/, '');
   logger.trace(token);
 
   if (!token) {

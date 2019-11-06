@@ -3,10 +3,7 @@ const logger = require("../../config/config").logger;
 
 export function generateJWT(user) {
   const tokenData = { username: user.username, id: user.id };
-  return jwt.sign({ user: tokenData}, process.env.TOKEN_SECRET, {
-    "algorithm": "HS256",
-    expiresIn: 86400 // expires in 24 hours
-  });
+  return jwt.sign({ user: tokenData }, process.env.TOKEN_SECRET);
 }
 
 export function requireLogin(req, res, next) {
@@ -18,7 +15,7 @@ export function requireLogin(req, res, next) {
 }
 
 export function decodeToken(req, res) {
-  const token = req.headers['authorization'];
+  const token = req.headers['authorization'].replace(/^JWT\s/, '');
   logger.trace(token);
 
   if (!token) {
