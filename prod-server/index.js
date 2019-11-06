@@ -14,7 +14,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /* eslint-disable no-unused-vars */
 var app = (0, _express2.default)();
-var port = 3000;
+var port = 30;
 var logger = require("../config/config.js").logger;
 
 (0, _env.setEnvironment)(app);
@@ -23,7 +23,7 @@ var logger = require("../config/config.js").logger;
 
 app.get("/", function (req, res) {
   if (process.env.NODE_ENV !== "production") {
-    return res.send("running server in development mode");
+    return res.status(200).json({ status: "success", message: "back-end API of the Task Manager", mode: "Development" });
   } else {
     return res.sendfile("index.html", { root: __dirname + "/../dist/" });
   }

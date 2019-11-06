@@ -20,7 +20,7 @@ export function index(req, res) {
       }
       return res.status(500).json({ message: "Server error" });
     }
-    return res.status(201).json();
+    return res.status(201).json({message: "Added new user!", status: 201, user: req.body});
   });
 }
 
