@@ -1,4 +1,11 @@
-# Client-side-programming [![Build Status](https://dev.azure.com/LucJoosten1234/LucJoosten1234/_apis/build/status/LucJoostenNL.Client-side-programming?branchName=master)](https://dev.azure.com/LucJoosten1234/LucJoosten1234/_build/latest?definitionId=1&branchName=master) ![Image description](https://jwt.io/img/badge-compatible.svg)
+# Client-side-programming  ![Image description](https://jwt.io/img/badge-compatible.svg)
+
+- Azure Pipeline: [![Build Status](https://dev.azure.com/LucJoosten1234/LucJoosten1234/_apis/build/status/LucJoostenNL.Client-side-programming?branchName=master)](https://dev.azure.com/LucJoosten1234/LucJoosten1234/_build/latest?definitionId=1&branchName=master) 
+
+- [![pipeline status](https://gitlab.com/LucJoostenDev/Client-side-programming/badges/master/pipeline.svg)](https://gitlab.com/LucJoostenDev/Client-side-programming/commits/master)
+
+- Coverage: [![coverage report](https://gitlab.com/LucJoostenDev/Client-side-programming/badges/master/coverage.svg)](https://gitlab.com/LucJoostenDev/Client-side-programming/commits/master)
+
 This is an individual client-side programming assignment for the second period of my second year. In this assignment I had the opportunity to develop my own case. My case is to develop an asynchronous Task Manager as a SPA (Single Page Application). The benefits of a SPA is that the views of the pages won't be reloaded every time when you open a link, but the data still needs to be loaded when you enter a new viewpage. The benefit is that this is much faster than a multipage application where every page has to be loaded and reloaded when visiting a page for the second time.
 
 ------
