@@ -34,10 +34,7 @@
             <router-link id="custom-link" class="nav-link" to="/login" exact>Login</router-link>
           </li>
           <li v-if="$store.state.isLoggedIn" class="nav-item">
-            <a
-              id="custom-link"
-              class="nav-link"
-            >account</a>
+            <router-link id="custom-link" class="nav-link" to="/account" exact>Account</router-link>
           </li>
           <li v-if="$store.state.isLoggedIn" class="nav-item">
             <a v-on:click.prevent="logout()" id="custom-link" class="nav-link">Logout</a>

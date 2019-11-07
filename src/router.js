@@ -60,6 +60,16 @@ const router = new Router({
       }
     },
     {
+      path: "/change-password",
+      name: "change-password",
+      component: () => import("./views/account/ChangePassword.vue")
+    },
+    {
+      path: "/account",
+      name: "account",
+      component: () => import("./views/account/Details.vue")
+    },
+    {
       path: "/register",
       name: "register",
       component: () => import("./views/account/Register.vue"),

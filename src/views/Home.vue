@@ -15,7 +15,6 @@ export default {
   },
   beforeCreate: function() {
     fetch(this.$store.state.apiURL + "/api/user", { method: "GET" })
-      //.then(res => res.json())
   }
 };
 </script>
