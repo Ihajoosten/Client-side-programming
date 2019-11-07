@@ -14,7 +14,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /* eslint-disable no-unused-vars */
 var app = (0, _express2.default)();
-var port = 30;
+var port = 38;
 var logger = require("../config/config.js").logger;
 
 (0, _env.setEnvironment)(app);
@@ -27,6 +27,22 @@ app.get("/", function (req, res) {
   } else {
     return res.sendfile("index.html", { root: __dirname + "/../dist/" });
   }
+});
+
+// Handle endpoint not found.
+app.all('*', function (req, res, next) {
+  logger.error('Endpoint not found.');
+  var errorObject = {
+    message: 'Endpoint does not exist!',
+    code: 404,
+    date: new Date()
+  };
+  next(errorObject);
+});
+
+// Error handler
+app.use(function (error, req, res, next) {
+  res.status(error.code).json(error);
 });
 
 app.listen(port, function () {

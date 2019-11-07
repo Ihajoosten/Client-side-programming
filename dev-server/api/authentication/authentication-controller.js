@@ -12,7 +12,7 @@ export function index(req, res) {
       return res.status(500).json();
     }
     if (!user) {
-      return res.status(401).json();
+      return res.status(401).json({message: "Username does not match", status: 401});
     }
 
     const passwordMatch = User.passwordMatches(
@@ -20,7 +20,7 @@ export function index(req, res) {
       user.password
     );
     if (!passwordMatch) {
-      return res.status(401).json();
+      return res.status(401).json({message: "Password does not match", status: 401});
     }
     const token = generateJWT(user);
     return res.status(200).json({ token: token });

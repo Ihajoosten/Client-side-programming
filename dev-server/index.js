@@ -5,7 +5,7 @@ import { setEnvironment } from "./config/env.js";
 import { connectToDB } from "./config/db.js";
 
 const app = express();
-const port = 30;
+const port = 38;
 const logger = require("../config/config.js").logger;
 
 setEnvironment(app);
@@ -19,6 +19,23 @@ app.get("/", (req, res) => {
     return res.sendfile("index.html", { root: __dirname + "/../dist/" });
   }
 });
+
+// Handle endpoint not found.
+app.all('*', function (req, res, next) {
+  logger.error('Endpoint not found.');
+  var errorObject = {
+    message: 'Endpoint does not exist!',
+    code: 404,
+    date: new Date()
+  };
+  next(errorObject);
+});
+
+// Error handler
+app.use((error, req, res, next) => {
+  res.status(error.code).json(error)
+})
+
 
 app.listen(port, () =>
   logger.trace(
