@@ -5,7 +5,7 @@ import { setEnvironment } from "./config/env.js";
 import { connectToDB } from "./config/db.js";
 
 const app = express();
-const port = 38;
+const port = 399;
 const logger = require("../config/config.js").logger;
 
 setEnvironment(app);

@@ -14,7 +14,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /* eslint-disable no-unused-vars */
 var app = (0, _express2.default)();
-var port = 38;
+var port = 399;
 var logger = require("../config/config.js").logger;
 
 (0, _env.setEnvironment)(app);

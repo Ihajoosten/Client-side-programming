@@ -18,7 +18,7 @@ export function create(req, res) {
   const id = auth.getUserId(req);
   User.findOne({ _id: id }, (error, user) => {
     if (error && !user) {
-      return res.status(500).json();
+      return res.status(500).json({message: "got an error and no user"});
     }
     const task = new Task(req.body.task);
     task.author = user._id;
@@ -26,9 +26,9 @@ export function create(req, res) {
 
     task.save(error => {
       if (error) {
-        return res.status(500).json();
+        return res.status(500).json({message: "got an error"});
       }
-      return res.status(201).json();
+      return res.status(201).json({task: task});
     });
   });
 }

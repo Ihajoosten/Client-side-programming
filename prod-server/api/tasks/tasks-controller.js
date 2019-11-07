@@ -44,7 +44,7 @@ function create(req, res) {
   var id = auth.getUserId(req);
   _userModel2.default.findOne({ _id: id }, function (error, user) {
     if (error && !user) {
-      return res.status(500).json();
+      return res.status(500).json({ message: "got an error and no user" });
     }
     var task = new _taskModel2.default(req.body.task);
     task.author = user._id;
@@ -52,9 +52,9 @@ function create(req, res) {
 
     task.save(function (error) {
       if (error) {
-        return res.status(500).json();
+        return res.status(500).json({ message: "got an error and no user" });
       }
-      return res.status(201).json();
+      return res.status(201).json({ task: task });
     });
   });
 }
