@@ -7,17 +7,16 @@ This is an individual client-side programming assignment for the second period o
 ------
 # Front-end
 * Vue.JS:  [![npm version](https://badge.fury.io/js/vue.svg)](https://badge.fury.io/js/vue) as framework
-* Vue CLI v4.0.5 to develop Single Page Applications
+* Vue CLI [![Vue-cli version](https://img.shields.io/badge/Vue--CLI-4.0.5-green)](https://img.shields.io/badge/Vue--CLI-4.0.5-green) to develop Single Page Applications 
 * Vue-Router: [![npm version](https://badge.fury.io/js/vue-router.svg)](https://badge.fury.io/js/vue-router) to use routing
 * Vuex: [![npm version](https://badge.fury.io/js/vuex.svg)](https://badge.fury.io/js/vuex) library to manage application state
-* Vue-DevTools chrome plugin v5.3.2
+* Vue-DevTools chrome plugin [![Node version](https://img.shields.io/badge/Vue--DevTools-5.3.2-green)](https://img.shields.io/badge/Vue--DevTools-5.3.2-green)
 ---------------
 # Back-end 
-* Node.JS v10.15.3 for MEVN development
+* Node.JS [![Node version](https://img.shields.io/badge/Node.js-10.15.3-green)](https://img.shields.io/badge/Node.js-10.15.3-green) for MEVN development
 * NoSQL MongoDB for the database management 
 * Express.JS: [![npm version](https://badge.fury.io/js/express.svg)](https://badge.fury.io/js/express) to build a secure RESTful API
 ----------
-
 
 ## Project setup
 ```
