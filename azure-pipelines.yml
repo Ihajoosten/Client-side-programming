@@ -15,10 +15,8 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-before_install:
-  - pip install --user codecov
-after_success:
-  - codecov --file coverage/lcov.info --disable search
+- task: pip install --user codecov
+- task: codecov --file coverage/lcov.info --disable search
 
 - script: |
     npm install
